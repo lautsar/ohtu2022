@@ -7,5 +7,11 @@ class Player:
         self.team = team
     
     def __str__(self):
-        return f"{self.name} team {self.team}, {self.goals} goals, {self.assists} assists"
+        return f"{self.name:20} {self.team} {str(self.goals):2} + {str(self.assists):2} = {str(self.goals+self.assists):3}"
+    
+    def __lt__(self, other):
+        if (self.goals + self.assists) == (other.goals + other.assists):
+            return self.goals < other.goals
+        else:
+            return (self.goals + self.assists) < (other.goals + other.assists)
 

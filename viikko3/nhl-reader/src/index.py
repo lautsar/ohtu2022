@@ -1,3 +1,4 @@
+from audioop import reverse
 import requests
 from player import Player
 
@@ -17,10 +18,12 @@ def main():
         )
 
         players.append(player)
+    
+    fin_players = list(filter(lambda p: p.nationality == "FIN", players))
 
-    print("Oliot:")
+    fin_players.sort(reverse=True)
 
-    for player in players:
+    for player in fin_players:
         print(player)
 
 if __name__ == "__main__":
