@@ -41,6 +41,9 @@ class Ostoskori:
                 self.tavaroita -= 1
                 self.yhteishinta = self.yhteishinta - poistettava.hinta()
 
+                if ostos.lukumaara() == 0:
+                    self.kokonaisostokset.remove(ostos)
+
     def tyhjenna(self):
         pass
         # tyhjentää ostoskorin
