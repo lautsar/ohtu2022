@@ -10,7 +10,20 @@ def main():
 
     query = QueryBuilder()
 
-    matcher = query.playsIn("NYR").hasAtLeast(5, "goals").hasFewerThan(10, "goals").build()
+    matcher = (
+        query
+            .oneOf(
+            query.playsIn("NYR")
+                .hasAtLeast(10, "assists")
+                .hasFewerThan(5, "goals")
+                .build(),
+            query.playsIn("PHI")
+                .hasAtLeast(40, "points")
+                .build(),
+            query.hasAtLeast(25, "goals").build()
+            )
+            .build()
+        )
 
     for player in stats.matches(matcher):
         print(player)
