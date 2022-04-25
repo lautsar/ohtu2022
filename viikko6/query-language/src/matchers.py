@@ -1,5 +1,3 @@
-from operator import truediv
-
 
 class And:
     def __init__(self, *matchers):
@@ -51,10 +49,10 @@ class HasFewerThan:
         return player_value < self._value
 
 class All:
-    def __init__(self):
-        pass
+    def __init__(self, *matchers):
+        self.__matchers = matchers
 
-    def matches(self):
+    def matches(self, player):
         return True
 
 class Not:
